@@ -34,7 +34,7 @@ A full-stack apartment listing platform built with a TypeScript/Node.js backend,
 ### 1. Clone the repository
 
 ```bash
-git clone <your-fork-or-repo>
+git clone https://github.com/mahmoudossama10/Nawy-assessment
 cd apartment-app
 ```
 
@@ -124,3 +124,12 @@ apartment-app/
 - Set `DATABASE_URL`, `PORT`, `NEXT_PUBLIC_API_BASE_URL`, and `API_BASE_URL` per environment.
 - Use `npm run build` followed by `npm run start` within each service for production.
 - Prisma migrations can be applied via `npx prisma migrate deploy` (backend).
+
+## Access for Reviewers
+
+If the repository is private, grant read access to `NawyDevHiring` (dev.hiring@nawy.com).
+
+---
+
+Built with ❤️ for the Nawy engineering challenge.
+

@@ -1,20 +1,26 @@
+# Node
 node_modules
 npm-debug.log*
 
+# Build outputs
 backend/dist
 frontend/.next
 frontend/out
 
+# Env files
 *.env
 *.env.local
 *.env.*
 
+# Logs
 *.log
 logs
 
+# Editor
 .vscode
 .idea
 *.swp
 
+# Docker
 *.pid
 
