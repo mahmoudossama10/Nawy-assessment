@@ -1,5 +1,6 @@
 import type { Apartment } from '@prisma/client';
 import { Prisma } from '@prisma/client';
+import { HttpError } from '../errors/HttpError';
 import { prisma } from '../lib/prisma';
 import type { CreateApartmentInput, ListApartmentQuery } from '../validators/apartmentValidators';
 
@@ -66,6 +67,18 @@ export const getApartmentById = async (id: string) => {
 };
 
 export const createApartment = async (input: CreateApartmentInput) => {
+  // Prevent creating duplicate apartments with same unitNumber within the same project
+  const existing = await prisma.apartment.findFirst({
+    where: {
+      unitNumber: { equals: input.unitNumber, mode: 'insensitive' },
+      project: { equals: input.project, mode: 'insensitive' }
+    }
+  });
+
+  if (existing) {
+    throw new HttpError(409, 'Apartment with the same unit number already exists in this project');
+  }
+
   const apartment = await prisma.apartment.create({
     data: {
       ...input,

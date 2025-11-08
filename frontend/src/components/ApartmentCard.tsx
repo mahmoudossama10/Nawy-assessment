@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import React from 'react';
 import type { Apartment } from '@/types/apartment';
 import SafeImage from './SafeImage';
 
@@ -6,15 +7,17 @@ interface ApartmentCardProps {
   apartment: Apartment;
 }
 
+const currencyFormatter = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD',
+  maximumFractionDigits: 0,
+});
+
 function formatCurrency(value: number) {
-  return new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-    maximumFractionDigits: 0
-  }).format(value);
+  return currencyFormatter.format(value);
 }
 
-export default function ApartmentCard({ apartment }: ApartmentCardProps) {
+function ApartmentCard({ apartment }: ApartmentCardProps) {
   const image = apartment.images?.[0];
   const imageFallback = (
     <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-brand-100 to-brand-200 text-brand-700">
@@ -73,4 +76,6 @@ export default function ApartmentCard({ apartment }: ApartmentCardProps) {
     </article>
   );
 }
+
+export default React.memo(ApartmentCard);
 

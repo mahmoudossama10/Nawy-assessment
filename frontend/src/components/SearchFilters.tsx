@@ -1,50 +1,34 @@
-'use client';
+"use client";
 
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import { FormEvent, useState, useTransition } from 'react';
+import React, { FormEvent, useState } from 'react';
+
 
 interface SearchFiltersProps {
   projects: string[];
+  search?: string;
+  project?: string;
+  onFilter?: (search: string, project: string) => void;
 }
 
-export default function SearchFilters({ projects }: SearchFiltersProps) {
-  const searchParams = useSearchParams();
-  const router = useRouter();
-  const pathname = usePathname();
-  const [isPending, startTransition] = useTransition();
+function SearchFilters({ projects, search: searchProp = '', project: projectProp = '', onFilter }: SearchFiltersProps) {
+  
 
-  const [search, setSearch] = useState(searchParams.get('search') ?? '');
-  const [project, setProject] = useState(searchParams.get('project') ?? '');
+  const [search, setSearch] = useState(searchProp);
+  const [project, setProject] = useState(projectProp);
 
   const onSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const params = new URLSearchParams(Array.from(searchParams.entries()));
-    params.set('page', '1');
-
-    if (search.trim()) {
-      params.set('search', search.trim());
-    } else {
-      params.delete('search');
+    if (onFilter) {
+      onFilter(search, project);
     }
-
-    if (project) {
-      params.set('project', project);
-    } else {
-      params.delete('project');
-    }
-
-    startTransition(() => {
-      const query = params.toString();
-      router.push(query ? `${pathname}?${query}` : pathname);
-    });
   };
 
   const resetFilters = () => {
     setSearch('');
     setProject('');
-    startTransition(() => {
-      router.push(pathname);
-    });
+    if (onFilter) {
+      onFilter('', '');
+    }
   };
 
   return (
@@ -89,10 +73,9 @@ export default function SearchFilters({ projects }: SearchFiltersProps) {
       <div className="flex gap-3 sm:w-auto">
         <button
           type="submit"
-          disabled={isPending}
-          className="flex-1 rounded-xl bg-brand-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-brand-700 disabled:cursor-not-allowed disabled:bg-brand-400 sm:flex-none"
+          className="flex-1 rounded-xl bg-brand-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-brand-700 sm:flex-none"
         >
-          {isPending ? 'Searching…' : 'Search'}
+          Search
         </button>
         <button
           type="button"
@@ -105,4 +88,6 @@ export default function SearchFilters({ projects }: SearchFiltersProps) {
     </form>
   );
 }
+
+export default React.memo(SearchFilters);
 

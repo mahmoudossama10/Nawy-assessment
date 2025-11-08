@@ -1,6 +1,9 @@
 import type { Apartment, ApartmentListResponse } from '@/types/apartment';
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL ?? process.env.API_BASE_URL ?? 'http://localhost:4000';
+const API_BASE_URL =
+  typeof window === 'undefined'
+    ? process.env.API_BASE_URL ?? process.env.NEXT_PUBLIC_API_BASE_URL ?? 'http://localhost:4000'
+    : process.env.NEXT_PUBLIC_API_BASE_URL ?? process.env.API_BASE_URL ?? 'http://localhost:4000';
 
 const handleResponse = async <T>(response: Response): Promise<T> => {
   if (!response.ok) {

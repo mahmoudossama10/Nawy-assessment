@@ -1,0 +1,237 @@
+openapi: 3.0.3
+info:
+  title: Nawy Apartments API
+  version: 1.0.0
+  description: API spec for the Nawy Apartments backend.
+servers:
+  - url: http://localhost:4000
+    description: Local development
+  - url: http://backend:4000
+    description: Docker internal
+paths:
+  /api/apartments:
+    get:
+      summary: List apartments
+      parameters:
+        - name: search
+          in: query
+          description: Substring search across name, unitNumber and project
+          schema:
+            type: string
+        - name: project
+          in: query
+          description: Filter by project name (substring, case-insensitive)
+          schema:
+            type: string
+        - name: page
+          in: query
+          description: Page number (1-indexed)
+          schema:
+            type: integer
+            minimum: 1
+            default: 1
+        - name: pageSize
+          in: query
+          description: Items per page
+          schema:
+            type: integer
+            minimum: 1
+            default: 9
+      responses:
+        '200':
+          description: A paginated list of apartments
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApartmentListResponse'
+    post:
+      summary: Create a new apartment
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApartmentCreate'
+      responses:
+        '201':
+          description: Apartment created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Apartment'
+        '400':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /api/apartments/projects:
+    get:
+      summary: List all project names
+      responses:
+        '200':
+          description: Sorted list of unique project names
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+  /api/apartments/{id}:
+    get:
+      summary: Get apartment by id
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Apartment object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Apartment'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    Apartment:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        unitNumber:
+          type: string
+        project:
+          type: string
+        bedrooms:
+          type: integer
+        bathrooms:
+          type: integer
+        price:
+          type: number
+          format: double
+        area:
+          type: number
+          format: float
+        address:
+          type: string
+        city:
+          type: string
+        country:
+          type: string
+        description:
+          type: string
+        images:
+          type: array
+          items:
+            type: string
+            format: uri
+        amenities:
+          type: array
+          items:
+            type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      required:
+        - id
+        - name
+        - unitNumber
+        - project
+        - bedrooms
+        - bathrooms
+        - price
+        - area
+        - address
+        - city
+        - country
+        - description
+        - images
+        - amenities
+        - createdAt
+        - updatedAt
+    ApartmentCreate:
+      type: object
+      properties:
+        name:
+          type: string
+        unitNumber:
+          type: string
+        project:
+          type: string
+        bedrooms:
+          type: integer
+        bathrooms:
+          type: integer
+        price:
+          type: number
+        area:
+          type: number
+        address:
+          type: string
+        city:
+          type: string
+        country:
+          type: string
+        description:
+          type: string
+        images:
+          type: array
+          items:
+            type: string
+            format: uri
+        amenities:
+          type: array
+          items:
+            type: string
+      required:
+        - name
+        - unitNumber
+        - project
+        - bedrooms
+        - bathrooms
+        - price
+        - area
+        - address
+        - city
+        - country
+        - description
+    ApartmentListResponse:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Apartment'
+        meta:
+          type: object
+          properties:
+            page:
+              type: integer
+            pageSize:
+              type: integer
+            total:
+              type: integer
+            totalPages:
+              type: integer
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
+        errors:
+          type: object

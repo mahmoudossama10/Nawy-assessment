@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import * as apartmentService from '../services/apartmentService';
+import { HttpError } from '../errors/HttpError';
 import {
   createApartmentSchema,
   listApartmentQuerySchema
@@ -16,6 +17,10 @@ export const listApartments = async (req: Request, res: Response, next: NextFunc
     const result = await apartmentService.listApartments(parsed.data);
     res.json(result);
   } catch (error) {
+    if (error instanceof HttpError) {
+      res.status(error.statusCode).json({ message: error.message });
+      return;
+    }
     next(error);
   }
 };

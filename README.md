@@ -102,6 +102,15 @@ Services:
 
 The backend container automatically runs Prisma migrations and seeds sample data (20+ apartments across multiple projects) on startup. No additional commands needed!
 
+## Documentation
+
+Additional project documentation is available in the `docs/` directory:
+
+- `docs/ARCHITECTURE.md` — Architecture, design decisions, and performance optimizations implemented.
+- `docs/API.md` — API reference for the backend endpoints (parameters, responses, examples).
+
+Please read those before making further architectural changes or large refactors.
+
 ## Testing & Quality
 
 - `backend`: `npm run lint`
