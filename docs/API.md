@@ -131,7 +131,7 @@ Errors
 ## Notes & Best Practices
 
 
-You can also find a machine-readable OpenAPI (Swagger) spec at `docs/openapi.yaml` for use with Swagger UI or other tooling.
+You can also find a machine-readable OpenAPI (Swagger) spec at `docs/openapi.yaml`
 ---
 
 For architecture and implementation notes see `docs/ARCHITECTURE.md`.

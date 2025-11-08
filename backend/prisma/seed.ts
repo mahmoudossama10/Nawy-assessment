@@ -17,7 +17,7 @@ const apartments: Prisma.ApartmentCreateInput[] = [
     description: 'Spacious apartment with panoramic city views and modern finishes.',
     images: [
       'https://images.unsplash.com/photo-1505691723518-36a5ac3be353',
-      'https://plus.unsplash.com/premium_photo-1676823553207-758c7a66e9bb?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170'
+      'https://images.unsplash.com/photo-1505691938895-1758d7feb511'
     ],
     amenities: ['Pool Access', 'Gym Membership', '24/7 Security', 'Smart Thermostat']
   },
@@ -88,7 +88,7 @@ const apartments: Prisma.ApartmentCreateInput[] = [
     country: 'Egypt',
     description: 'Exclusive penthouse with private rooftop terrace and unobstructed Nile views.',
     images: [
-      'https://plus.unsplash.com/premium_photo-1676823553207-758c7a66e9bb?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170',
+      'https://images.unsplash.com/photo-1505691938895-1758d7feb511',
       'https://images.unsplash.com/photo-1484154218962-a197022b5858'
     ],
     amenities: ['Private Rooftop', 'River Views', 'Concierge Service', 'Private Elevator', 'Wine Cellar']
@@ -142,7 +142,7 @@ const apartments: Prisma.ApartmentCreateInput[] = [
     country: 'Egypt',
     description: 'Spacious villa with private garden, perfect for large families and entertaining.',
     images: [
-      'https://plus.unsplash.com/premium_photo-1676823553207-758c7a66e9bb?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170',
+      'https://images.unsplash.com/photo-1505691938895-1758d7feb511',
       'https://images.unsplash.com/photo-1469796466635-455ede028aca'
     ],
     amenities: ['Private Garden', 'Club House', 'Kids Area', 'Smart Home System', 'Solar Water Heating', 'BBQ Area']
@@ -178,7 +178,7 @@ const apartments: Prisma.ApartmentCreateInput[] = [
     country: 'UAE',
     description: 'Expansive penthouse with private pool, double-height living room, and panoramic skyline views.',
     images: [
-      'https://plus.unsplash.com/premium_photo-1676823553207-758c7a66e9bb?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170',
+      'https://images.unsplash.com/photo-1505691938895-1758d7feb511',
       'https://images.unsplash.com/photo-1484154218962-a197022b5858'
     ],
     amenities: ['Private Pool', 'Sky Deck', 'Cinema Room', 'Butler Service']
@@ -322,7 +322,7 @@ const apartments: Prisma.ApartmentCreateInput[] = [
     country: 'Egypt',
     description: 'Charming flat blending modern comfort with traditional courtyard living, near historic temples.',
     images: [
-      'https://plus.unsplash.com/premium_photo-1676823553207-758c7a66e9bb?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170',
+      'https://images.unsplash.com/photo-1505691938895-1758d7feb511',
       'https://images.unsplash.com/photo-1493809842364-78817add7ffb'
     ],
     amenities: ['Shared Courtyard', 'Cultural Lounge', 'Artisanal Market Access', 'Bike Storage']
@@ -358,7 +358,7 @@ const apartments: Prisma.ApartmentCreateInput[] = [
     country: 'Saudi Arabia',
     description: 'Lakeside villa with private dock, plunge pool, and lush landscaping inspired by mangrove forests.',
     images: [
-      'https://https://plus.unsplash.com/premium_photo-1676823553207-758c7a66e9bb?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170',
+      'https://images.unsplash.com/photo-1505691938895-1758d7feb511',
       'https://images.unsplash.com/photo-1469796466635-455ede028aca'
     ],
     amenities: ['Private Dock', 'Plunge Pool', 'Outdoor Cinema', 'Solar Panels']
@@ -376,7 +376,7 @@ const apartments: Prisma.ApartmentCreateInput[] = [
     country: 'Jordan',
     description: 'Industrial-inspired corner loft with exposed brick, steel beams, and skyline views.',
     images: [
-      'https://plus.unsplash.com/premium_photo-1676823553207-758c7a66e9bb?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170',
+      'https://images.unsplash.com/photo-1505691938895-1758d7feb511',
       'https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e'
     ],
     amenities: ['Sky Lounge', 'Art Gallery Lobby', 'Coworking Hub', 'Yoga Studio']

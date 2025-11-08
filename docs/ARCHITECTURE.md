@@ -56,14 +56,6 @@ This document explains the project's architecture, key design decisions, how fea
 - Module-level `Intl.NumberFormat` instance to avoid repeated construction per render.
 - Added `sharp` in `frontend/package.json` to ensure Next.js image optimization is available in production builds.
 
-## Further recommendations (future work)
-
-- Replace SWR with React Query for more advanced cache-control and built-in `keepPreviousData` support.
-- Virtualize the apartment grid with `react-window` if the number of items grows large (100s+).
-- Add indexes on `apartment.project`, `apartment.name`, and `apartment.unitNumber` in the DB for faster searches.
-- Use `prisma.groupBy` or DB `DISTINCT` to fetch unique project names if the table grows very large instead of reading every row's project field.
-- Add server-side logging/metrics and a simple APM to identify slow requests in production.
-
 ## How to run locally (summary)
 
 See the root `README.md` for full developer setup steps. In short:

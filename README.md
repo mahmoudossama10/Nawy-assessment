@@ -109,8 +109,6 @@ Additional project documentation is available in the `docs/` directory:
 - `docs/ARCHITECTURE.md` — Architecture, design decisions, and performance optimizations implemented.
 - `docs/API.md` — API reference for the backend endpoints (parameters, responses, examples).
 
-Please read those before making further architectural changes or large refactors.
-
 ## Testing & Quality
 
 - `backend`: `npm run lint`
@@ -127,9 +125,3 @@ apartment-app/
 │   └── src/             # App routes, components, lib utilities
 └── docker-compose.yml   # Containers for frontend, backend, and PostgreSQL
 ```
-
-## Deployment Notes
-
-- Set `DATABASE_URL`, `PORT`, `NEXT_PUBLIC_API_BASE_URL`, and `API_BASE_URL` per environment.
-- Use `npm run build` followed by `npm run start` within each service for production.
-- Prisma migrations can be applied via `npx prisma migrate deploy` (backend).
