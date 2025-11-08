@@ -128,10 +128,8 @@ Errors
 - `500` — Server error.
 
 
-## Notes & Best Practices
-
+---
 
 You can also find a machine-readable OpenAPI (Swagger) spec at `docs/openapi.yaml`
----
 
 For architecture and implementation notes see `docs/ARCHITECTURE.md`.
