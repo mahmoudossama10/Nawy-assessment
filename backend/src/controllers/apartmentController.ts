@@ -20,6 +20,15 @@ export const listApartments = async (req: Request, res: Response, next: NextFunc
   }
 };
 
+export const listProjects = async (_req: Request, res: Response, next: NextFunction): Promise<void> => {
+  try {
+    const projects = await apartmentService.listProjects();
+    res.json(projects);
+  } catch (error) {
+    next(error);
+  }
+};
+
 export const getApartmentById = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
     const { id } = req.params;

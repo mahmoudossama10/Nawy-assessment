@@ -48,6 +48,18 @@ export const listApartments = async (filters: ListApartmentQuery) => {
   };
 };
 
+export const listProjects = async () => {
+  // Fetch all apartments but only select the project field, then dedupe
+  const projects = await prisma.apartment.findMany({
+    select: { project: true }
+  });
+
+  const unique = Array.from(new Set(projects.map((p: { project: string | null }) => p.project))).filter(
+    Boolean
+  ) as string[];
+  return unique.sort();
+};
+
 export const getApartmentById = async (id: string) => {
   const apartment = await prisma.apartment.findUnique({ where: { id } });
   return apartment ? serializeApartment(apartment) : null;

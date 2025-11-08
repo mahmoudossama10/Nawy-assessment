@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import ApartmentCard from '@/components/ApartmentCard';
 import SearchFilters from '@/components/SearchFilters';
-import { fetchApartments } from '@/lib/api';
+import { fetchApartments, fetchProjects } from '@/lib/api';
 
 export const dynamic = 'force-dynamic';
 
@@ -37,10 +37,10 @@ export default async function HomePage({ searchParams }: HomePageProps) {
     pageSize
   });
 
-  const projectOptionsSet = new Set(items.map((apartment) => apartment.project));
-  if (project) {
-    projectOptionsSet.add(project);
-  }
+  // Fetch global list of projects so the select shows all projects, not only those on the current page
+  const allProjects = await fetchProjects();
+  const projectOptionsSet = new Set(allProjects);
+  if (project) projectOptionsSet.add(project);
   const projectOptions = Array.from(projectOptionsSet).sort();
 
   const baseQuery = new URLSearchParams();

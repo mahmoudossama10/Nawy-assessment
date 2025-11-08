@@ -46,3 +46,9 @@ export const createApartment = async (payload: Partial<Apartment>) => {
   return handleResponse<Apartment>(response);
 };
 
+export const fetchProjects = async (): Promise<string[]> => {
+  const url = new URL('/api/apartments/projects', API_BASE_URL);
+  const response = await fetch(url.toString(), { cache: 'no-store' });
+  return handleResponse<string[]>(response);
+};
+
