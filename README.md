@@ -29,7 +29,7 @@ A full-stack apartment listing platform built with a TypeScript/Node.js backend,
 
 - Node.js 20+
 - npm 10+
-- (Optional) Docker Desktop for containerized setup
+- Docker Desktop for containerized setup
 
 ### 1. Clone the repository
 
@@ -124,12 +124,3 @@ apartment-app/
 - Set `DATABASE_URL`, `PORT`, `NEXT_PUBLIC_API_BASE_URL`, and `API_BASE_URL` per environment.
 - Use `npm run build` followed by `npm run start` within each service for production.
 - Prisma migrations can be applied via `npx prisma migrate deploy` (backend).
-
-## Access for Reviewers
-
-If the repository is private, grant read access to `NawyDevHiring` (dev.hiring@nawy.com).
-
----
-
-Built with ❤️ for the Nawy engineering challenge.
-
