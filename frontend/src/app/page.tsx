@@ -1,26 +1,21 @@
 
 import ApartmentsClient from './ApartmentsClient';
 
+/**
+ * Home page component that serves as the application's entry point.
+ * Architectural decisions:
+ * - Server Component for optimal SEO and initial page load
+ * - Defers interactive features to ApartmentsClient for selective hydration
+ * - Uses force-dynamic to ensure fresh data on each request
+ * 
+ * This implements the "Shell & Core" pattern where:
+ * - Page (shell) - Static, SEO-friendly content rendered on server
+ * - ApartmentsClient (core) - Rich interactive features on client
+ */
+
+// Ensures Next.js treats this as a dynamic route
+// Critical for real-time inventory and pricing updates
 export const dynamic = 'force-dynamic';
-
-type SearchParamValue = string | string[] | undefined;
-
-interface HomePageProps {
-  searchParams?: Record<string, SearchParamValue>;
-}
-
-const toStringParam = (value: SearchParamValue) => {
-  if (Array.isArray(value)) {
-    return value.at(-1);
-  }
-  return value;
-};
-
-const parseNumber = (value: SearchParamValue, fallback: number) => {
-  const parsed = Number(toStringParam(value));
-  return Number.isFinite(parsed) && parsed > 0 ? parsed : fallback;
-};
-
 
 export default function HomePage() {
   return (

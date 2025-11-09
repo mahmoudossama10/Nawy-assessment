@@ -5,7 +5,15 @@ import { notFoundHandler, errorHandler } from './middleware/errorHandlers';
 
 const app = express();
 
-app.use(cors());
+const allowedOrigin = 'http://localhost:3000';
+
+// 2. Configure CORS options
+const corsOptions = {
+  origin: allowedOrigin,
+  methods: ['GET', 'POST'],
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 
 app.get('/health', (_req, res) => {
